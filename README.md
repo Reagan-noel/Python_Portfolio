@@ -2015,3 +2015,164 @@ print(normalize_rectange((0.0,0.0,1.0,5.0)))
 ```
 
 
+## TRANSCRIPTION:
+
+```python
+# Prompt the user to enter the input fasta file name
+
+input_file_name = input("Enter the make of the Input fasta file:")
+```
+
+    Enter the make of the Input fasta file: SUMO Sequence
+
+
+
+```python
+# Open the input fasta file and read the DNA sequence
+
+with open(input_file_name, 'r') as input_file:
+    dna_sequence = ""
+    for line in input_file:
+        if line.startswith(">"):
+            continue
+        dna_sequence += line.strip()
+```
+
+
+```python
+# Transcribe the DNA to RNA
+rna_sequence = ""
+for nucleotide in dna_sequence:
+    if nucleotide == "T":
+        rna_sequence += "U"
+    else:
+        rna_sequence += nucleotide
+```
+
+
+```python
+# Prompt the user to enter the output file name
+output_file_name = input("Enter the name of the output file:")
+```
+
+    Enter the name of the output file: Ubiquitin_RNA.txt
+
+
+
+```python
+# Save the RNA sequence to a text file
+with open(output_file_name,"w") as output_file:
+    output_file.write(rna_sequence)
+    print("The DNA sequence has been saved to (output_file_name)")
+```
+
+    The DNA sequence has been saved to (output_file_name)
+
+
+
+```python
+print(rna_sequence)
+```
+
+    AUGUCUGACGAAAAGAAGGGAGGUGAGACCGAGCACAUCAACCUGAAGGUCCUCGGCCAGGACAACGCCGUCGUCCAGUUCAAGAUCAAGAAGCACACACCCUUGAGGAAGCUGAUGAACGCCUACUGCGACCGUGCCGGACUCUCCAUGCAGGUGGUGCGCUUCCGUUUCGACGGACAGCCCAUCAACGAGAACGACACUCCGACCUCGCUGGAGAUGGAGGAGGGCGACACCAUCGAGGUUUACCAGCAGCAGACUGGUGGCGCUCCAUAAAUGUCUGACGAAAAGAAGGGAGGUGAGACCGAGCACAUCAACCUGAAGGUCCUCGGCCAGGACAACGCCGUCGUCCAGUUCAAGAUCAAGAAGCACACACCCUUGAGGAAGCUGAUGAACGCCUACUGCGACCGUGCCGGACUCUCCAUGCAGGUGGUGCGCUUCCGUUUCGACGGACAGCCCAUCAACGAGAACGACACUCCGACCUCGCUGGAGAUGGAGGAGGGCGACACCAUCGAGGUUUACCAGCAGCAGACUGGUGGCGCUCCAUAA
+
+
+
+```python
+
+```
+
+
+## TRANSLATION:
+
+
+```python
+# Prompt the user to enter the input RNA file name
+
+input_file_name = input("Enter the name of the input RNA file:")
+```
+
+    Enter the name of the input RNA file: Ubiquitin_RNA.txt
+
+
+
+```python
+# Open the input RNA file and read the RNA sequence
+
+with open(input_file_name, "r") as input_file:
+    rna_sequence = input_file.read().strip()
+```
+
+
+```python
+# Define the codon table
+codon_table = {
+    "UUU": "F", "UUC": "F", "UUA": "L", "UUG": "L",
+    "CUU": "L", "CUC": "L", "CUA": "L", "CUG": "L",
+    "AUU": "I", "AUC": "I", "AUA": "I", "AUG": "M",
+    "GUU": "V", "GUC": "V", "GUA": "V", "GUG": "V",
+    "UCU": "S", "UCC": "S", "UCA": "S", "UCG": "S", 
+    "CGU": "P", "CCC": "P", "CCA": "P", "CCG": "P",
+    "ACU": "T", "ACC": "T", "ACA": "T", "ACG": "T",
+    "GCU": "A", "GCC": "A", "GCA": "A", "GCG": "A",
+    "UAU": "Y", "UAC": "Y", "UAA": "Y", "UAG": "Y",
+    "CAU": "H", "CAC": "H", "CAA": "H", "CAG": "H",
+    "AAU": "N", "AAC": "N", "AAA": "N", "AAG": "N", 
+    "GAU": "D", "GAC": "D", "GAA": "D", "GAG": "D",
+    "UGU": "C", "UGC": "C", "UGA": "C", "UGG": "C",
+    "CGU": "R", "CGC": "R", "CGA": "R", "CGC": "R", 
+    "AGU": "S", "AGC": "S", "AGA": "S", "AGG": "S",
+    "GGU": "G", "GGC": "G", "GGA": "G", "GGG": "G", 
+}
+```
+
+
+```python
+# Translate RNA to protein
+protein_sequence = ""
+for i in range(0, len(rna_sequence),3):
+    codon = rna_sequence[i:i+3]
+    if len(codon) == 3:
+        amino_acid = codon_table[codon]
+        if amino_acid == "*" :
+            break
+        protein_sequence += amino_acid
+```
+
+
+```python
+# Prompt the user to enter the output file name
+
+output_file_name = input("Enter the name of the outputu file:")
+```
+
+    Enter the name of the outputu file: Ubiquitin_Protein.txt
+
+
+
+```python
+# Save the protein sequence to a text file
+
+with open(output_file_name, "w") as output_file:
+    output_file.write(protein_sequence)
+    print(f" The protein sequence has been saved to {output_file_name}")
+```
+
+     The protein sequence has been saved to Ubiquitin_Protein.txt
+
+
+
+```python
+print(protein_sequence)
+```
+
+    MSDDNNGGDTDHINLNVLGHDNAVVHFNINNHTPLSNLMNAYCDRAGLSMHVVRFRFDGHPINDNDTPTSLDMDDGDTIDVYHHHTGGAPYMSDDNNGGDTDHINLNVLGHDNAVVHFNINNHTPLSNLMNAYCDRAGLSMHVVRFRFDGHPINDNDTPTSLDMDDGDTIDVYHHHTGGAPY
+
+
+
+```python
+
+```
+
+
+
